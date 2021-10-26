@@ -1,0 +1,22 @@
+.main-container {
+    display: grid;
+    height: 100vh;
+    border: 20px;
+    grid-template-columns: 3fr 6fr 1fr;
+    grid-template-rows: 1fr 8fr 1fr;
+}
+
+#grid-container {
+    background-color: rgb(224, 220, 220);
+    display: grid;
+    height: 500px;
+    width: 500px;
+    justify-self: center;
+    align-self: center;
+}
+
+.filler, .options, .header{
+    justify-self: center;
+    align-self: center;
+    padding: 10px;
+}
