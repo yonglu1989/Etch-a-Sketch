@@ -3,13 +3,15 @@ const gridContainer = document.getElementById('grid-container');
 const clearBoardButton = document.getElementById('clear-button');
 const rainbowButton = document.getElementById('rainbow-button');
 const greyButton = document.getElementById('grey-button');
+const blackButton = document.getElementById('black-button');
 let sliderValue = document.getElementById('slider-value');
 let slider = document.getElementById('my-range');
 
 sliderValue.innerHTML = slider.value.toString() + "x" + slider.value.toString()
 let color = "#000000";
 let rainbow = false;
-
+blackButton.style.backgroundColor = "black";
+blackButton.style.color = "white";
 
 drawBoard(slider.value);
 activateSquares();
@@ -78,6 +80,13 @@ function updateBoard(){
     activateSquares();
 }
 
+// Simply removes the highlighted backgrounds
+function removeBackgrounds() {
+    blackButton.style.backgroundColor = "white";
+    blackButton.style.color = "black";
+    rainbowButton.style.backgroundColor = "white";
+    greyButton.style.backgroundColor = "white";
+}
 
 // Update the current slider value (each time you drag the slider handle)
 slider.oninput = updateBoard;
@@ -98,3 +107,27 @@ greyButton.addEventListener('click', () => {
     rainbow = false;
     color = "grey";
 });
+
+// Black Button: Set the Etcher to etch the black color.
+blackButton.addEventListener('click', () => {
+    rainbow = false;
+    color = "black";
+});
+
+
+// Adding background colors to clicked buttons
+blackButton.addEventListener('click', () => {
+    removeBackgrounds();
+    blackButton.style.backgroundColor = "black";
+    blackButton.style.color = "white";
+})
+
+greyButton.addEventListener('click', () => {
+    removeBackgrounds();
+    greyButton.style.backgroundColor = "grey";
+})
+
+rainbowButton.addEventListener('click', () => {
+    removeBackgrounds();
+    rainbowButton.style.backgroundColor = "pink";
+})

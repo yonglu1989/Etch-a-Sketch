@@ -2,30 +2,43 @@
     display: grid;
     height: 100vh;
     border: 20px;
-    grid-template-columns: 2fr 7fr 1fr;
+    grid-template-columns: 3fr 6fr 2fr;
     grid-template-rows: 1fr 8fr 1fr;
 }
 
 #grid-container {
     background-color: rgb(224, 220, 220);
     display: grid;
-    height: 600px;
-    width: 600px;
+    height: 500px;
+    width: 500px;
     justify-self: center;
     align-self: center;
     grid-template-columns: auto;
     grid-template-rows: auto;
+    border: 2px black solid;
 }
 
 .options {
+    margin-top: 90px;
     display: flex;
     flex-direction: column;
-    justify-self: center;
-    gap: 12px;
+    justify-self: right;
+    gap: 28px;
+}
+
+.option-text {
+    font-size: 30px;
+    font-weight: bold;
 }
 .filler, .header, .button-holder, .option-text, .rainbow-holder, .grey-holder{
     justify-self: center;
     align-self: center;
+}
+
+.header {
+    margin-top: 40px;
+    font-size: 56px;
+    font-weight: bold;
 }
 
 .square {
@@ -39,3 +52,25 @@
     display: flex;
     justify-content: center;
 }
+
+button {
+    background-color: White;
+    width: 130px;
+    min-height: 40px; 
+    border-radius: 6px;
+    border-color: black;
+}
+
+#grey-button:hover, #clear-button:hover{
+    background-color: grey !important;
+}
+
+#black-button:hover {
+    background-color: black !important;
+    color: white !important;
+} 
+
+#rainbow-button:hover {
+    background-color: paleturquoise !important;
+}
+
