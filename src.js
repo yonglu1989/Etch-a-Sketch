@@ -1,14 +1,17 @@
 // Initialization
-
 const gridContainer = document.getElementById('grid-container');
+const clearBoardButton = document.getElementById('clear-button');
+const rainbowButton = document.getElementById('rainbow-button');
+const greyButton = document.getElementById('grey-button');
 let sliderValue = document.getElementById('slider-value');
 let slider = document.getElementById('my-range');
 
 sliderValue.innerHTML = slider.value.toString() + "x" + slider.value.toString()
-let gridNum = slider.value;
 let color = "#000000";
+let rainbow = false;
 
-drawBoard(gridNum);
+
+drawBoard(slider.value);
 activateSquares();
 
 function drawBoard(inputNum) {
@@ -39,14 +42,27 @@ function removeAllSquares(parent) {
     }
 }
 
+// Generates random int from 0 to max.
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
 // Function colors the square according to determined Color
 function colorSquare(e) {
-    this.style.backgroundColor = color;
+    if (rainbow == true) {
+        let r = getRandomInt(255);
+        let g = getRandomInt(255);
+        let b = getRandomInt(255);
+        color = "rgb(" + r + "," + g +"," + b + ")";
+        this.style.backgroundColor = color;
+    }
+    else {
+        this.style.backgroundColor = color;
+    }
 }
 
 // Adding mouseenter event listeners to each square.
 function activateSquares() {
-    const squares = document.querySelectorAll('.square');
+    let squares = document.querySelectorAll('.square');
     squares.forEach((square) => {
         square.addEventListener('mouseenter', colorSquare);
     });
@@ -67,7 +83,18 @@ function updateBoard(){
 slider.oninput = updateBoard;
 
 // Clear Board button: sets all background colors to white.
-const clearBoardButton = document.getElementById('clear-button');
 clearBoardButton.addEventListener('click', () => {
+    let squares = document.querySelectorAll('.square');
     squares.forEach(square => square.style.backgroundColor = "white");
+});
+
+// Rainbow Button: Sets the Etcher to etch random colors.
+rainbowButton.addEventListener('click', () => {
+    rainbow = true;
+});
+
+// Grey Button: Set the Etcher to etch the grey color.
+greyButton.addEventListener('click', () => {
+    rainbow = false;
+    color = "grey";
 });
